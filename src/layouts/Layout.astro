@@ -1,0 +1,32 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION, PLACEHOLDER_IMAGE } from "../consts";
+import Header from "../components/Header.astro";
+
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+}
+
+const {
+    title = SITE_TITLE,
+    description = SITE_DESCRIPTION,
+    image = PLACEHOLDER_IMAGE,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="og:image" content={image} />
+    <title>{title}</title>
+
+    <body class="min-h-screen bg-slate-800">
+        <Header />
+        <slot />
+    </body>
+</html>
