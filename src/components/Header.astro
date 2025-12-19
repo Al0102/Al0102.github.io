@@ -1,27 +1,29 @@
----
-import H1 from "./H1.astro";
----
-
 <header
-    class="flex flex-col md:flex-row space-x-3
-        m-3 mt-6 px-6 w-full md:w-fit sticky top-0 text-green-600
-        hover:[&_ul]:scale-y-100 hover:[&_ul]:h-auto"
+    class="flex space-x-1 m-6 px-6 py-3 max-w-fit
+        sticky top-0 rounded-full
+        bg-dark-secondary text-bright-primary text-3xl
+        hover:[&_ul]:scale-y-100 hover:[&_ul]:h-auto cursor-pointer"
 >
-    <H1 class="underline-offset-12">
+    <h1 class="underline-offset-12">
+        <span class="text-light-primary">&gt;</span>
         <a href="/" class="hover:underline">alex_lu</a>
-        <span class="dropdown-button text-teal-500">{Astro.url.pathname}</span>
-    </H1>
-    <div class="relative">
-        <ul
-            class="flex flex-col space-y-3 justify-start absolute
-                text-teal-500 text-2xl font-bold *:hover:underline
-                bg-black p-6 rounded-xl w-full md:w-fit
-                scale-y-0 h-0 origin-top transition-transform duration-100"
+    </h1>
+    <div>
+        <span class="dropdown-button text-bright-secondary whitespace-pre"
+            >{Astro.url.pathname === "/" ? "/home" : Astro.url.pathname}</span
         >
-            <li><a href="/">home</a></li>
-            <li><a href="/about">about</a></li>
-            <li><a href="/blog">blog</a></li>
-        </ul>
+        <div class="relative dropdown-menu">
+            <ul
+                class="flex flex-col space-y-3 justify-start absolute
+                    text-bright-secondary text-2xl font-bold *:hover:underline *:min-w-full
+                    bg-dark-secondary/95 p-6 rounded-xl w-fit
+                    scale-y-0 h-0 origin-top transition-transform duration-100"
+            >
+                <li><a href="/">/home</a></li>
+                <li><a href="/about">/about</a></li>
+                <li><a href="/blog">/blog</a></li>
+            </ul>
+        </div>
     </div>
 
     <script>
@@ -32,7 +34,18 @@ import H1 from "./H1.astro";
         if (!(dropdown && ul)) throw new Error("dropdown incorrectly loaded");
 
         dropdown.addEventListener("click", () => {
-            ul.classList.toggle("active-dropdown");
+            setTimeout(() => {
+                ul.classList.toggle("active-dropdown");
+            }, 10);
+        });
+        document.addEventListener("click", (event) => {
+            if (
+                ul.classList.contains("active-dropdown") &&
+                (event.target as HTMLElement).closest(".dropdown-menu") ===
+                    null &&
+                (event.target as HTMLElement) !== dropdown
+            )
+                ul.classList.toggle("active-dropdown");
         });
     </script>
 </header>

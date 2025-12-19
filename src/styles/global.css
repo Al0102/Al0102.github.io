@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+	--color-bright-primary: #00a63e;
+	--color-bright-secondary: #00bba7;
+	--color-light-primary: antiquewhite;
+	--color-dark-primary: #1d293d;
+	--color-dark-secondary: #0a061a;
+}
+
 @font-face {
 	font-family: "Atkinson";
 	src: url("/fonts/atkinson-regular.woff") format("woff");
@@ -18,7 +26,7 @@
 
 body {
 	font-family: "Atkinson", sans-serif;
-	color: antiquewhite;
+	color: var(--color-light-primary);
 	margin: 0;
 	padding: 0;
 }
