@@ -6,6 +6,10 @@
 	--color-light-primary: antiquewhite;
 	--color-dark-primary: #1d293d;
 	--color-dark-secondary: #0a061a;
+
+	--radius-card: 1rem;
+
+	--shadow-primary: 10px 10px;
 }
 
 @font-face {
