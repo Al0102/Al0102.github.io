@@ -38,3 +38,7 @@ body {
 .active-dropdown {
 	@apply h-auto scale-y-100;
 }
+
+.transition-primary {
+	@apply transition-all duration-105
+}

@@ -1,20 +1,19 @@
 ---
-import H1 from './H1.astro';
+import H1 from "./H1.astro";
 
 interface Props {
-    class?: string;
-    title?: string;
+  class?: string;
+  title?: string;
 }
 
-const { class: className = "" , title: titleContent = ""} = Astro.props;
+const { class: className = "", title: titleContent = "" } = Astro.props;
 ---
 
-  <div class={
-      `rounded-card p-6 m-3 md:m-9
-      bg-dark-secondary shadow-dark-secondary/50 shadow-primary
-      ${className}`}>
-    <H1>{titleContent}</H1>
+<div
+  class={`rounded-card p-6 m-9 bg-dark-secondary shadow-dark-secondary/50 shadow-primary ${className}`}
+>
+  <H1 class="animate-scroll-visible">{titleContent}</H1>
+  <div class="content overflow-hidden transition-transform duration-300">
     <slot />
   </div>
-
 </div>
