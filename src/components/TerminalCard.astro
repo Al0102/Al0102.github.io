@@ -10,10 +10,13 @@ const { class: className = "", title: titleContent = "" } = Astro.props;
 ---
 
 <div
-  class={`rounded-card p-6 m-9 bg-dark-secondary shadow-dark-secondary/50 shadow-primary ${className}`}
+  title={titleContent}
+  class={`TerminalCard rounded-card p-6 m-9 bg-dark-secondary shadow-dark-secondary/50 shadow-primary ${className}`}
 >
-  <H1 class="animate-scroll-visible">{titleContent}</H1>
-  <div class="content overflow-hidden transition-transform duration-300">
+  <H1> &gt; <span class="animate-scroll-visible"></span> </H1>
+  <div
+    class="animate-finish-visible scale-y-0 origin-top text-dark-secondary content overflow-hidden transition-primary"
+  >
     <slot />
   </div>
 </div>

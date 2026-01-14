@@ -36,22 +36,18 @@ import "../styles/global.css";
 
             <P>
                 What I do know is that I have always been passionate about
-                creation, my tools and experience beingthe only changes
+                creation, my tools and experience being the only changes
                 throughout. Right now, code is my chisel and text files my
                 stone.
-            </P>
-            <P>
-                I'm not picky with this though! I love anything fun, funky, or
-                frivolous. Although my skills in these are essentially
-                non-existent, I also love exploring language, doodling, and
-                occasionally writing short stories.
             </P>
 
             <P
                 >Outside of games and software, you might find me doing one of
                 my many random hobbies. That rustle in the bushes? Might be a
                 wild Alex taking a run through the trees. Not hearing much? I'm
-                probably enjoying a good fantasy or drama novel.
+                probably enjoying a good fantasy or drama novel. Ramblings of a
+                madman? C'est moi aussi (writing a short story but I can't find
+                the right words).
             </P>
         </TerminalCard>
 
@@ -77,3 +73,65 @@ import "../styles/global.css";
         <TerminalCard title="Check these out now!" />
     </Main>
 </Layout>
+
+<script>
+    function revealCard(
+        text: String,
+        scrollIndex: number,
+        element: any,
+        revealAtEnd: any,
+        delay_in_milliseconds = 50,
+    ) {
+        element.textContent = text.substring(0, scrollIndex);
+        console.log(scrollIndex);
+
+        if (scrollIndex == text.length) {
+            setTimeout(() => {
+                revealAtEnd.classList.remove("scale-y-0");
+                revealAtEnd.classList.remove("text-dark-secondary");
+            }, 5 * delay_in_milliseconds);
+            return;
+        }
+        scrollIndex += 1;
+        setTimeout(() => {
+            revealCard(text, scrollIndex, element, revealAtEnd);
+        }, delay_in_milliseconds);
+    }
+
+    function onIntersection(entries: Array<IntersectionObserverEntry>) {
+        for (let entry of entries) {
+            const target = entry.target;
+            const targetHeading = target.querySelector(
+                ".animate-scroll-visible",
+            );
+            const targetReveal = target.querySelector(
+                ".animate-finish-visible",
+            );
+            if (
+                entry.isIntersecting &&
+                target &&
+                !target.hasAttribute("revealed") &&
+                targetHeading &&
+                targetReveal
+            ) {
+                target.setAttribute("revealed", "true");
+                console.log(target);
+
+                const text = target.getAttribute("title") || "undefined";
+
+                targetHeading.textContent = "";
+                revealCard(text, 0, targetHeading, targetReveal);
+            }
+        }
+    }
+    const observer: IntersectionObserver = new IntersectionObserver(
+        onIntersection,
+    );
+
+    const terminalCard: NodeListOf<HTMLElement> | null =
+        document.querySelectorAll(".TerminalCard");
+
+    for (let card of terminalCard) {
+        if (card) observer.observe(card);
+    }
+</script>
