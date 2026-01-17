@@ -1,0 +1,39 @@
+---
+import H1 from "../components/H1.astro";
+import P from "../components/P.astro";
+import TerminalCard from "../components/TerminalCard.astro";
+import "../styles/global.css";
+import "../styles/post.css";
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout>
+    <TerminalCard title={frontmatter.title} animate={false}>
+        <blockquote>{frontmatter.subtitle}</blockquote>
+        <ul
+            class="flex text-bright-primary space-x-6 hover:shadow-2 shadow-bright-primary"
+        >
+            {
+                frontmatter.tags.map((tag: string) => (
+                    <li>
+                        <P>{tag}</P>
+                    </li>
+                ))
+            }
+        </ul>
+        <p class="text-light-secondary">
+            {new Date(frontmatter.startDate).toDateString()}
+        </p>
+        <p class="text-light-secondary">
+            Project ran from {new Date(frontmatter.startDate).toDateString()}
+            till {new Date(frontmatter.startDate).toDateString()}
+        </p>
+        <ul
+            class="flex text-bright-primary space-x-6 hover:shadow-2 shadow-bright-primary"
+        >
+        </ul>
+    </TerminalCard>
+    <main class="post-body"><slot /></main>
+</Layout>

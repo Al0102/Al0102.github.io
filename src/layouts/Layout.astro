@@ -2,6 +2,8 @@
 import { SITE_TITLE, SITE_DESCRIPTION, PLACEHOLDER_IMAGE } from "../consts";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+import Main from "../components/Main.astro";
 
 interface Props {
     title?: string;
@@ -28,7 +30,11 @@ const {
 
     <body class="min-h-screen bg-slate-800">
         <Header />
-        <slot />
+
+        <Main>
+            <slot />
+        </Main>
+
         <Footer />
     </body>
 </html>

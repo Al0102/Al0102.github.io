@@ -1,14 +1,16 @@
 @import "tailwindcss";
-@import "./global.css"
+@import "./global.css";
 
-h2 {
-  @apply text-3xl font-bold mt-6 mb-3;
-}
+.post-body {
+  h2 {
+    @apply text-3xl font-bold mt-6 mb-3;
+  }
 
-p {
-  @apply text-xl mb-3;
-}
+  p {
+    @apply text-xl mb-3;
+  }
 
-a {
-  @apply text-bright-secondary underline;
+  a {
+    @apply text-bright-secondary underline;
+  }
 }
