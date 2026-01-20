@@ -6,4 +6,88 @@ interface Props {
 const { class: className = "" } = Astro.props;
 ---
 
-<div class="SlideShow"></div>
+<div class={`Slideshow relative p-3 ${className}`}>
+  <ul
+    class="max-w-full mx-auto whitespace-nowrap
+           overflow-x-scroll no-scrollbar"
+  >
+    <slot />
+  </ul>
+  <div
+    class="flex flex-row items-center justify-between absolute top-0 left-0 w-full h-full md:px-6 text-bright-primary"
+  >
+    <button
+      class="slideshow-button left-button text-6xl font-bold opacity-40 hover:opacity-80 transition-primary"
+      onclick=""
+    >
+      &lt;
+    </button>
+    <button
+      class="slideshow-button right-button text-6xl font-bold opacity-40 hover:opacity-80 transition-primary"
+    >
+      &gt;
+    </button>
+  </div>
+</div>
+
+<script>
+  const scrollSpeed = 2;
+  const restartAutoscrollDelay = 5000;
+  document.querySelectorAll(".Slideshow").forEach((slideshow) => {
+    var autoscrollDirection = 1;
+    var autoscrollAmount = 1;
+    var scrolling: NodeJS.Timeout | null;
+    var resetScroll: NodeJS.Timeout;
+    const slideshowCards = slideshow.querySelector("ul");
+
+    function startManualScroll(element: Element) {
+      if (!slideshowCards) return;
+      if (element.classList.contains("left-button")) {
+        var scrollDirection: number = -scrollSpeed;
+      } else if (element.classList.contains("right-button")) {
+        var scrollDirection: number = scrollSpeed;
+      } else throw TypeError("No button direction class found");
+      scrolling = setInterval(() => {
+        slideshowCards.scrollLeft += scrollDirection;
+      }, 1);
+    }
+    function stopManualScroll() {
+      if (!scrolling) return;
+      clearTimeout(resetScroll);
+      clearInterval(scrolling);
+      resetScroll = setTimeout(() => {
+        scrolling = null;
+      }, restartAutoscrollDelay);
+    }
+
+    // AutoScroll
+    setInterval(() => {
+      if (!slideshowCards) return;
+      if (!scrolling) {
+        autoscrollAmount += 0.3 * autoscrollDirection;
+        slideshowCards.scrollLeft = Math.round(autoscrollAmount);
+      } else autoscrollAmount = slideshowCards.scrollLeft;
+      if (
+        slideshowCards.scrollWidth -
+          slideshowCards.scrollLeft -
+          slideshowCards.clientWidth <
+          5 ||
+        (slideshowCards.scrollLeft < 5 && autoscrollDirection == -1)
+      ) {
+        autoscrollDirection *= -1;
+      }
+    }, 1);
+
+    slideshow.querySelectorAll(".slideshow-button").forEach((element) => {
+      element.addEventListener("mousedown", () => {
+        startManualScroll(element);
+      });
+      element.addEventListener("touchstart", () => {
+        startManualScroll(element);
+      });
+      element.addEventListener("mouseup", () => {
+        stopManualScroll();
+      });
+    });
+  });
+</script>

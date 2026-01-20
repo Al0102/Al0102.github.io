@@ -1,77 +1,89 @@
 ---
 import H1 from "../components/H1.astro";
-import Main from "../components/Main.astro";
 import P from "../components/P.astro";
+import Slideshow from "../components/Slideshow.astro";
+import SlideshowCard from "../components/SlideshowCard.astro";
 import TerminalCard from "../components/TerminalCard.astro";
 import Layout from "../layouts/Layout.astro";
-import "../styles/global.css";
 ---
 
 <Layout title="alex_lu/home">
-    <Main>
-        <H1> Hi all! I'm Alex Lu. </H1>
+    <H1> Hi all! I'm Alex Lu. </H1>
+    <P>
+        I'm a self-taught game developer who also dabbles in a bit of
+        everything.
+    </P>
+    <P>
+        My main focus is on creating immersive and unique experiences, from
+        experimenting with control schemes to recreating UI of the past.
+    </P>
+
+    <TerminalCard title="cat about.txt">
         <P>
-            I'm a self-taught game developer who also dabbles in a bit of
-            everything.
+            I'm a student developer currently in the Computer System Technology
+            program at the British Columbia Institute of Technology. I'm 18,
+            based in Richmond, B.C. - Canada, and am an asprin.
         </P>
+
         <P>
-            My main focus is on creating immersive and unique experiences, from
-            experimenting with control schemes to recreating UI of the past.
+            If I was asked when my journey began, I would not be able to answer.
+            Would it be my first "Hello World" during the first summer before
+            highschool? Using Scratch? Or would it have been further back,
+            playing make-believe in my cousin's basement?
         </P>
 
-        <TerminalCard title="cat about.txt">
-            <P>
-                I'm a student developer currently in the Computer System
-                Technology program at the British Columbia Institute of
-                Technology. I'm 18, based in Richmond, B.C. - Canada, and am an
-                asprin.
-            </P>
+        <P>
+            What I do know is that I have always been passionate about creation,
+            my tools and experience being the only changes throughout. Right
+            now, code is my chisel and text files my stone.
+        </P>
 
-            <P>
-                If I was asked when my journey began, I would not be able to
-                answer. Would it be my first "Hello World" during the first
-                summer before highschool? Using Scratch? Or would it have been
-                further back, playing make-believe in my cousin's basement?
-            </P>
+        <P
+            >Outside of games and software, you might find me doing one of my
+            many random hobbies. That rustle in the bushes? Might be a wild Alex
+            taking a run through the trees. Not hearing much? I'm probably
+            enjoying a good fantasy or drama novel. Ramblings of a madman? C'est
+            moi aussi (writing a short story but I can't find the right words).
+        </P>
+    </TerminalCard>
 
-            <P>
-                What I do know is that I have always been passionate about
-                creation, my tools and experience being the only changes
-                throughout. Right now, code is my chisel and text files my
-                stone.
-            </P>
+    <TerminalCard title="cat skills.txt">
+        <P
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
+            officia tempora illo labore ea laudantium magnam accusamus sapiente
+            illum dolorum. Nemo delectus modi hic optio nobis eveniet,
+            consequuntur vitae id alias quasi, pariatur illum voluptatem
+            voluptatibus ad quo, labore esse rem aperiam. Repellendus aspernatur
+            quae nisi vero voluptas itaque fugit!</P
+        >
+    </TerminalCard>
 
-            <P
-                >Outside of games and software, you might find me doing one of
-                my many random hobbies. That rustle in the bushes? Might be a
-                wild Alex taking a run through the trees. Not hearing much? I'm
-                probably enjoying a good fantasy or drama novel. Ramblings of a
-                madman? C'est moi aussi (writing a short story but I can't find
-                the right words).
-            </P>
-        </TerminalCard>
+    <TerminalCard title="ls projects">
+        <Slideshow>
+            <SlideshowCard
+                title="tGame"
+                image="/assets/blog-placeholder-about.jpg"
+                description="A mini Python package for making games in the terminal."
+            />
+            <SlideshowCard
+                title="tGame"
+                image="/assets/blog-placeholder-about.jpg"
+                description="A mini games in the terminal."
+            />
+            <SlideshowCard
+                title="tGame"
+                image="/assets/blog-placeholder-about.jpg"
+                description="A mini Python package for making games in the terminal."
+            />
+            <SlideshowCard
+                title="tGame"
+                image="/assets/blog-placeholder-about.jpg"
+                description="A mini Python package for making games in the terminal."
+            />
+        </Slideshow>
+    </TerminalCard>
 
-        <TerminalCard title="cat skills.txt">
-            <P
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Blanditiis officia tempora illo labore ea laudantium magnam
-                accusamus sapiente illum dolorum. Nemo delectus modi hic optio
-                nobis eveniet, consequuntur vitae id alias quasi, pariatur illum
-                voluptatem voluptatibus ad quo, labore esse rem aperiam.
-                Repellendus aspernatur quae nisi vero voluptas itaque fugit!</P
-            >
-        </TerminalCard>
-
-        <TerminalCard title="ls projects">
-            <div>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Obcaecati vero officiis deserunt distinctio veritatis repellat
-                animi pariatur maiores, nesciunt debitis?
-            </div>
-        </TerminalCard>
-
-        <TerminalCard title="Check these out now!" />
-    </Main>
+    <TerminalCard title="Check these out now!" />
 </Layout>
 
 <script>
@@ -83,7 +95,6 @@ import "../styles/global.css";
         delay_in_milliseconds = 50,
     ) {
         element.textContent = text.substring(0, scrollIndex);
-        console.log(scrollIndex);
 
         if (scrollIndex == text.length) {
             setTimeout(() => {
@@ -115,7 +126,6 @@ import "../styles/global.css";
                 targetReveal
             ) {
                 target.setAttribute("revealed", "true");
-                console.log(target);
 
                 const text = target.getAttribute("title") || "undefined";
 

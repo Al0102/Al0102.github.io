@@ -1,0 +1,40 @@
+---
+interface Props {
+  class?: string;
+  title: string;
+  image: string;
+  description?: string;
+}
+
+const {
+  class: className = "",
+  title: titleContent,
+  image,
+  description = "",
+} = Astro.props;
+
+const height: number = 102;
+---
+
+<div
+  title={titleContent}
+  class={`SlideshowCard rounded-card
+        inline-block aspect-3/2 h-fit m-3 px-5 py-3 
+        text-light-primary bg-dark-primary shadow-light-secondary/50 shadow-primary ${className}`}
+>
+  <h4 class="text-xl mt-1 mb-1 md:mb-3 font-bold">
+    {titleContent}
+  </h4>
+  <img
+    class="object-cover aspect-video max-h-[30vh] mx-auto md:mb-3 rounded-card"
+    src={image}
+    alt={`${titleContent} image`}
+  />
+  {
+    description != "" && (
+      <p class="hidden md:block max-w-full overflow-hidden text-ellipsis">
+        {description}
+      </p>
+    )
+  }
+</div>
