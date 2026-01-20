@@ -71,10 +71,12 @@ const { class: className = "" } = Astro.props;
         slideshowCards.scrollWidth -
           slideshowCards.scrollLeft -
           slideshowCards.clientWidth <
-          5 ||
-        (slideshowCards.scrollLeft < 5 && autoscrollDirection == -1)
+        3
       ) {
-        autoscrollDirection *= -1;
+        autoscrollDirection = -1;
+      }
+      if (slideshowCards.scrollLeft < 3 && autoscrollDirection == -1) {
+        autoscrollDirection = 1;
       }
     }, 1);
 
