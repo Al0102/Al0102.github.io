@@ -1,3 +1,11 @@
-<main class="py-3 px-9 md:px-12 max-w-5xl">
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<main class={`py-3 px-9 md:px-12 max-w-5xl mx-auto ${className}`}>
     <slot />
 </main>
