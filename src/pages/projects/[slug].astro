@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import "../../styles/global.css";
+import "../../styles/post.css";
+import P from "../../components/P.astro";
+import TerminalCard from "../../components/TerminalCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import Tag from "../../components/Tag.astro";
+
+export const getStaticPaths = (async () => {
+    const projects = await getCollection("projects");
+    return projects.map((project) => {
+        return {
+            params: {
+                slug: project.slug,
+            },
+            props: { project },
+        };
+    });
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<Layout>
+    <!-- Title -->
+    <TerminalCard title={project.data.title} animate={false}>
+        <!-- Description -->
+        <blockquote>{project.data.description}</blockquote>
+        <!-- Tags -->
+        <ul
+            class="flex text-bright-primary my-3 space-x-6 hover:shadow-2 shadow-bright-primary"
+        >
+            {project.data.tags.map((tag: string) => <Tag name={tag} />)}
+        </ul>
+        <!-- Date -->
+        <p class="text-light-secondary">
+            Posted: <b>{new Date(project.data.startDate).toDateString()}</b>
+        </p>
+        <p class="text-light-secondary">
+            Project: From <b
+                >{new Date(project.data.startDate).toDateString()}</b
+            >
+            till <b>{new Date(project.data.startDate).toDateString()}</b>
+        </p>
+        <ul
+            class="flex text-bright-primary space-x-6 hover:shadow-2 shadow-bright-primary"
+        >
+        </ul>
+    </TerminalCard>
+    <main class="post-body">
+        <Content />
+    </main>
+</Layout>

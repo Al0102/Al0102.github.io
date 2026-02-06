@@ -12,13 +12,11 @@ const {
   image,
   description = "",
 } = Astro.props;
-
-const height: number = 102;
 ---
 
 <div
   title={titleContent}
-  class={`SlideshowCard rounded-card
+  class={`ImageCard rounded-card
         inline-block aspect-3/2 h-fit m-3 px-5 py-3 
         text-light-primary bg-dark-primary shadow-light-secondary/50 shadow-primary ${className}`}
 >

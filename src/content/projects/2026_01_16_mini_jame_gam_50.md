@@ -1,14 +1,11 @@
 ---
-layout: '/src/layouts/PostLayout.astro'
-title: 'Mini Jame Gam 50 (Deja Vu + Fruit): Berry-O-Ware'
+title: 'Berry-O-Ware: Mini Jame Gam 50'
 postDate: 2026-01-16
 startDate: 2026-01-09
 endDate: 2026-01-11
-description: 'Two player Unity + Godot creation?'
-author: 'AL'
-image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'Berry-O-Ware'
+description: 'Two person Unity + Godot development?'
+image: '/assets/blog-placeholder-about.jpg'
+# image_alt: 'Berry-O-Ware'
 tags: ["Game Jam", "Game", "Unity", "Godot"]
 ---
 | [Mini-Jame-Gam-50](https://itch.io/jam/mini-jame-gam-50) | [Berry-O-Ware on Itch](https://grcubes.itch.io/berry-o-ware) |

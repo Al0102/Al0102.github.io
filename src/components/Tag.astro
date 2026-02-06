@@ -1,0 +1,23 @@
+---
+import P from "./P.astro";
+
+interface Props {
+  name?: string;
+  text_colour?: string;
+  bg_colour?: string;
+  class?: string;
+}
+
+const {
+  name,
+  text_colour = "light-primary",
+  bg_colour = "dark-primary",
+  class: className = "",
+} = Astro.props;
+---
+
+<li
+  class={`px-3 py-1 rounded-full hover:-translate-y-0.5 transition-primary text-${text_colour} bg-${bg_colour} ${className}`}
+>
+  {name}
+</li>

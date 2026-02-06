@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import H1 from "../../components/H1.astro";
+import Layout from "../../layouts/Layout.astro";
+import Main from "../../components/Main.astro";
+import TerminalCard from "../../components/TerminalCard.astro";
+import P from "../../components/P.astro";
+
+const projects = await getCollection("projects");
+console.log(projects);
+---
+
+<Layout>
+  <H1> Projects </H1>
+  <Main>
+    {
+      projects.map((project) => (
+        <a href={`/projects/${project.slug}`}>
+          <TerminalCard title={project.data.title} animate={false}>
+            <img src={project.data.image} alt="Image" class="fit w-full" />
+            <P>{project.data.description}</P>
+          </TerminalCard>
+        </a>
+      ))
+    }
+  </Main>
+</Layout>

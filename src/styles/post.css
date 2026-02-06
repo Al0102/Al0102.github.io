@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "./global.css";
 
+blockquote {
+  @apply text-xl italic font-bold text-light-secondary
+}
+
 .post-body {
   h2 {
     @apply text-3xl font-bold mt-6 mb-3;
@@ -9,6 +13,11 @@
   p {
     @apply text-xl mb-3;
   }
+
+  b {
+    @apply font-bold;
+  }
+
 
   a {
     @apply text-bright-secondary underline;
