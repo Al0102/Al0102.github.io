@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import "../../styles/global.css";
 import "../../styles/post.css";
-import P from "../../components/P.astro";
 import TerminalCard from "../../components/TerminalCard.astro";
 import Layout from "../../layouts/Layout.astro";
 import Tag from "../../components/Tag.astro";
@@ -32,7 +31,7 @@ const { Content } = await project.render();
         <blockquote>{project.data.description}</blockquote>
         <!-- Tags -->
         <ul
-            class="flex text-bright-primary my-3 space-x-6 hover:shadow-2 shadow-bright-primary"
+            class="flex text-bright-primary my-3 space-x-6 hover:shadow-2 shadow-bright-primary overflow-x-scroll no-scrollbar"
         >
             {project.data.tags.map((tag: string) => <Tag name={tag} />)}
         </ul>
