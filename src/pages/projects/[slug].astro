@@ -37,13 +37,11 @@ const { Content } = await project.render();
         </ul>
         <!-- Date -->
         <p class="text-light-secondary">
-            Posted: <b>{new Date(project.data.startDate).toDateString()}</b>
+            Posted: <b>{new Date(project.data.postDate).toDateString()}</b>
         </p>
         <p class="text-light-secondary">
-            Project: From <b
-                >{new Date(project.data.startDate).toDateString()}</b
-            >
-            till <b>{new Date(project.data.startDate).toDateString()}</b>
+            Project: <b>{new Date(project.data.startDate).toDateString()}</b>
+            till <b>{new Date(project.data.endDate).toDateString()}</b>
         </p>
         <ul
             class="flex text-bright-primary space-x-6 hover:shadow-2 shadow-bright-primary"
