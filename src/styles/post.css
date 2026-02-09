@@ -1,9 +1,6 @@
 @import "tailwindcss";
 @import "./global.css";
 
-blockquote {
-  @apply text-xl italic font-bold text-light-secondary
-}
 
 .post-body {
   h2 {

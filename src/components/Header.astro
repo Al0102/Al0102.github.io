@@ -1,6 +1,20 @@
+---
+const url_tokens: Array<string> = Astro.url.pathname.split("/");
+console.log(url_tokens);
+
+var formatted_url_path: string = "";
+for (let i = 1; i < url_tokens.length; ++i) {
+    let name =
+        i == 1
+            ? url_tokens[url_tokens.length - i]
+            : url_tokens[url_tokens.length - i].slice(0, 3) + "...";
+    formatted_url_path = "/" + name + formatted_url_path;
+}
+---
+
 <header
-    class="flex space-x-1 m-6 px-6 py-3 max-w-full
-        sticky top-0 z-100 rounded-full
+    class="flex flex-col md:flex-row gap-1 m-6 px-6 py-3 max-w-full
+        sticky top-0 z-100 rounded-card
         bg-dark-secondary text-bright-primary border border-light-primary text-3xl
         hover:[&_ul]:scale-y-100 hover:[&_ul]:h-auto cursor-pointer"
 >
@@ -8,17 +22,18 @@
         <span class="text-light-primary">&gt;</span>
         <a href="/" class="hover:underline">alex_lu</a>
     </h1>
-    <div class="flex flex-col">
-        <span class="dropdown-button text-bright-secondary whitespace-pre"
-            >{Astro.url.pathname === "/" ? "/home" : Astro.url.pathname}</span
+    <div class="flex flex-col max-w-full">
+        <span
+            class="dropdown-button text-bright-secondary whitespace-pre max-w-full overflow-x-clip"
+            >{Astro.url.pathname === "/" ? "/home" : formatted_url_path}</span
         >
         <!-- Dropdown -->
         <div class="relative top-3 dropdown-menu">
             <ul
-                class="flex flex-col space-y-3 justify-start absolute w-fit
+                class="flex flex-col space-y-3 justify-start absolute w-full md:w-fit
                     text-bright-secondary text-2xl font-bold *:hover:underline *:min-w-full
                     bg-dark-secondary p-6 pt-3 border border-t-0 border-light-primary rounded-b-xl
-                    scale-y-0 h-0 origin-top transition-transform duration-100"
+                    scale-y-0 h-0 origin-top transition-primary"
             >
                 <li><a href="/">/home</a></li>
                 <li><a href="/projects">/projects</a></li>

@@ -36,12 +36,20 @@ body {
 	padding: 0;
 }
 
+blockquote {
+	@apply text-xl italic font-bold text-light-secondary
+}
+
 .active-dropdown {
 	@apply h-auto scale-y-100;
 }
 
 .transition-primary {
-	@apply transition-all duration-105
+	@apply transition-all duration-105 ease-out
+}
+
+.transition-secondary {
+	@apply transition-all duration-300 ease-out
 }
 
 @layer utilities {
