@@ -2,12 +2,13 @@
 const url_tokens: Array<string> = Astro.url.pathname.split("/");
 
 var formatted_url_path: string = "";
-for (let i = 1; i < url_tokens.length; ++i) {
-    let name =
-        i == 1
-            ? url_tokens[url_tokens.length - i]
-            : url_tokens[url_tokens.length - i].slice(0, 3) + "...";
-    formatted_url_path = "/" + name + formatted_url_path;
+if (Astro.url.pathname == "/") {
+    formatted_url_path = "/home";
+} else {
+    for (let i = 1; i < url_tokens.length; ++i) {
+        let name = i == 1 ? url_tokens[url_tokens.length - i] : "...";
+        formatted_url_path = "/" + name + formatted_url_path;
+    }
 }
 ---
 
@@ -16,6 +17,7 @@ for (let i = 1; i < url_tokens.length; ++i) {
         sticky top-0 z-100 rounded-card
         bg-dark-secondary text-bright-primary border border-light-primary text-3xl
         hover:[&_ul]:scale-y-100 hover:[&_ul]:h-auto cursor-pointer"
+    title={Astro.url.pathname}
 >
     <h1 class="underline-offset-12">
         <span class="text-light-primary">&gt;</span>
@@ -24,7 +26,7 @@ for (let i = 1; i < url_tokens.length; ++i) {
     <div class="flex flex-col max-w-full">
         <span
             class="dropdown-button text-bright-secondary whitespace-pre max-w-full overflow-x-clip"
-            >{Astro.url.pathname === "/" ? "/home" : formatted_url_path}</span
+            >{formatted_url_path}</span
         >
         <!-- Dropdown -->
         <div class="relative top-3 dropdown-menu">
