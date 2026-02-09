@@ -5,23 +5,27 @@ import Layout from "../../layouts/Layout.astro";
 import Main from "../../components/Main.astro";
 import TerminalCard from "../../components/TerminalCard.astro";
 import P from "../../components/P.astro";
+import ImageCard from "../../components/ImageCard.astro";
 
 const projects = await getCollection("projects");
 console.log(projects);
 ---
 
 <Layout>
-  <H1> Projects </H1>
   <Main>
-    {
-      projects.map((project) => (
-        <a href={`/projects/${project.slug}`}>
-          <TerminalCard title={project.data.title} animate={false}>
-            <img src={project.data.image} alt="Image" class="fit w-full" />
-            <P>{project.data.description}</P>
-          </TerminalCard>
-        </a>
-      ))
-    }
+    <H1> Projects </H1>
+    <div class="grid grid-cols-1 md:grid-cols-4">
+      {
+        projects.map((project) => (
+          <a href={`/projects/${project.slug}`}>
+            <ImageCard
+              title={project.data.title}
+              image={project.data.image}
+              bg_colour="dark-secondary hover:-translate-y-3 transition-secondary"
+            />
+          </a>
+        ))
+      }
+    </div>
   </Main>
 </Layout>
