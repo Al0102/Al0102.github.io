@@ -5,6 +5,9 @@ import Slideshow from "../components/Slideshow.astro";
 import ImageCard from "../components/ImageCard.astro";
 import TerminalCard from "../components/TerminalCard.astro";
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
 ---
 
 <Layout title="alex_lu/home">
@@ -58,21 +61,19 @@ import Layout from "../layouts/Layout.astro";
         >
     </TerminalCard>
 
-    <TerminalCard title="ls projects">
-        <Slideshow>
-            <ImageCard
-                title="tGame"
-                image="/assets/blog-placeholder-about.jpg"
-            />
-            <ImageCard
-                title="tGame"
-                image="/assets/blog-placeholder-about.jpg"
-            />
-            <ImageCard
-                title="tGame"
-                image="/assets/blog-placeholder-about.jpg"
-            />
-        </Slideshow>
+    <TerminalCard title="ls projects" class="[&_.slideshow-buttons]:hidden">
+        <a href="/projects">
+            <Slideshow>
+                {
+                    projects.map((project) => (
+                        <ImageCard
+                            title={project.data.title}
+                            image={project.data.image}
+                        />
+                    ))
+                }
+            </Slideshow>
+        </a>
     </TerminalCard>
 
     <TerminalCard title="Check these out now!" />

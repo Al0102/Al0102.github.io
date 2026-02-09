@@ -3,18 +3,15 @@ import { getCollection } from "astro:content";
 import H1 from "../../components/H1.astro";
 import Layout from "../../layouts/Layout.astro";
 import Main from "../../components/Main.astro";
-import TerminalCard from "../../components/TerminalCard.astro";
-import P from "../../components/P.astro";
 import ImageCard from "../../components/ImageCard.astro";
 
 const projects = await getCollection("projects");
-console.log(projects);
 ---
 
 <Layout>
   <Main>
     <H1> Projects </H1>
-    <div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="flex flex-wrap">
       {
         projects.map((project) => (
           <a href={`/projects/${project.slug}`}>
