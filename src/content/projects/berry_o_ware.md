@@ -1,8 +1,8 @@
 ---
 title: 'Berry-O-Ware: Mini Jame Gam 50'
-postDate: 2026-01-16
-startDate: 2026-01-09
-endDate: 2026-01-11
+postDate: "2026-01-16"
+startDate: "2026-01-09"
+endDate: "2026-01-11"
 description: 'Two person Unity + Godot development?'
 image: '/assets/blog-placeholder-about.jpg'
 # image_alt: 'Berry-O-Ware'
@@ -11,7 +11,7 @@ tags: ["Game Jam", "Game", "Unity", "Godot"]
 | [Mini-Jame-Gam-50](https://itch.io/jam/mini-jame-gam-50) | [Berry-O-Ware on Itch](https://grcubes.itch.io/berry-o-ware) |
 
 
-What happens when you have no motivation to work on long term projects? Join a game jam with your friend so you're forced to do something, and you don't have to worry about bugs and doodle art because "I DID IT IN 3 DAYS DARN IT!".
+What happens when you have no motivation to work on long term projects? Join a game jam with your friend so you're forced to do something, and you don't have to worry about bugs and doodle art because "I DID IT IN 2 DAYS DARN IT!".
 
 ## The Beginnings
 
