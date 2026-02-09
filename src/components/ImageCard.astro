@@ -3,14 +3,16 @@ interface Props {
   class?: string;
   title: string;
   image: string;
-  description?: string;
+  text_colour?: string;
+  bg_colour?: string;
 }
 
 const {
   class: className = "",
   title: titleContent,
   image,
-  description = "",
+  text_colour = "light-primary",
+  bg_colour = "dark-primary",
 } = Astro.props;
 ---
 
@@ -18,7 +20,7 @@ const {
   title={titleContent}
   class={`ImageCard rounded-card
         inline-block aspect-3/2 h-fit m-3 px-5 py-3 
-        text-light-primary bg-dark-primary shadow-light-secondary/50 shadow-primary ${className}`}
+        text-${text_colour} bg-${bg_colour} shadow-light-secondary/50 shadow-primary ${className}`}
 >
   <h4 class="text-xl mt-1 mb-1 md:mb-3 font-bold">
     {titleContent}
@@ -28,11 +30,4 @@ const {
     src={image}
     alt={`${titleContent} image`}
   />
-  {
-    description != "" && (
-      <p class="hidden md:block max-w-full overflow-hidden text-ellipsis">
-        {description}
-      </p>
-    )
-  }
 </div>
