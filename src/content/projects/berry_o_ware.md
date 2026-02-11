@@ -4,7 +4,7 @@ postDate: "2026-01-16"
 startDate: "2026-01-09"
 endDate: "2026-01-11"
 description: 'Two person Unity + Godot development?'
-image: '/assets/blog-placeholder-about.jpg'
+image: '/assets/berryoware.png'
 # image_alt: 'Berry-O-Ware'
 tags: ["Game Jam", "Game", "Unity", "Godot"]
 ---
