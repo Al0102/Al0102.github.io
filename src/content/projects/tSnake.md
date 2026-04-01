@@ -4,13 +4,13 @@ postDate: '2026-03-04'
 startDate: '2026-02-01'
 endDate: ''
 description: 'Snake but multiplayer and the apples try to kill you'
-image: 'https://docs.astro.build/assets/rose.webp'
+image: '/assets/tSnake.png'
 tags: ["python", "solo", "games", "command line"]
 ---
 
 Oops. Sometimes with long hours of work, you're getting carried away in the zone. Other times, it's not so productive. These 15 hours were a bit of both (just kidding, 100% the latter), while I tried to figure out sockets and networking.
 
-Quick refresher, tSnake is an in-progress multiplayer game inspired by "snake". It will be playable from the terminal and made with Python (where I try my best to develop custom tools for display, input, etc.).
+tSnake is an in-progress multiplayer game inspired by "snake". It will be playable from the terminal and made with Python (where I try my best to develop custom tools for display, input, etc.).
 
 During these 15 hours, I learned how to host a server and connect clients to it. This involved youtube tutorials, documentation scouring, and plenty of banging my head against the wall. One of my main goals with projects like this is to maximise my understanding of what I'm using. This sometimes means spending longer than I should have to to solve simple bugs, avoiding direct answers from AI and minimising the use of heavily abstracted libraries. In this session, my focus was on setting up a client-server connection that can simulate the actual game but without the UI yet.
 
